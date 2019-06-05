@@ -19,12 +19,12 @@ set showcmd             " コマンドを画面の最下部に表示する
 set wrap                " 長いテキストの折り返し
 set textwidth=0         " 自動的に改行が入るのを無効化
 set colorcolumn=80      " その代わり80文字目にラインを入れる
-set cursorline      " その代わり80文字目にラインを入れる
-" 前時代的スクリーンベルを無効化
-set t_vb=
+set cursorline          " その代わり80文字目にラインを入れる
+           
+set t_vb=               " 前時代的スクリーンベルを無効化
 set novisualbell
 set foldmethod=indent    " 折り畳み
-set foldlevel=100    " ファイルを開くときに折り畳みをしない
+set foldlevel=100       " ファイルを開くときに折り畳みをしない
 
 """ 編集関係
 set infercase           " 補完時に大文字小文字を区別しない
@@ -42,10 +42,8 @@ set tabstop=4           " <Tab>が対応する空白の数
 au BufNewFile,BufRead *.yml set tabstop=2
 set shiftround          " '<'や'>'でインデントする際に'shiftwidth'の倍数に丸める
 set nf=                 " インクリメント、デクリメントを10進数にする
-" 対応括弧に'<'と'>'のペアを追加
-set matchpairs& matchpairs+=<:>
-" バックスペースでなんでも消せるようにする
-set backspace=indent,eol,start
+set matchpairs& matchpairs+=<:> "対応括弧に'<'と'>'のペアを追加
+set backspace=indent,eol,start " バックスペースでなんでも消せるようにする
 " クリップボードをデフォルトのレジスタとして指定。後にYankRingを使うので
 " 'unnamedplus'が存在しているかどうかで設定を分ける必要がある
 if has('unnamedplus')
@@ -89,6 +87,7 @@ vnoremap <Tab> %
 inoremap [ []<left>
 inoremap ( ()<left>
 inoremap { {}<left>
+inoremap < <><left>
 inoremap " ""<left>
 inoremap ' ''<left>
 " Ctrl + hjkl でウィンドウ間を移動
@@ -104,6 +103,13 @@ nnoremap <S-Down>  <C-w>+<CR>
 " タブ間の移動
 nnoremap <C-n> gt
 nnoremap <C-p> gT
+" ファイル実行 
+nnoremap <F5> :!python %<CR>
+" insert modeでのカーソル移動
+" inoremap <C-h> <left>
+" inoremap <C-l> <right>
+" inoremap <C-j> <down>
+" inoremap <C-k> <up>
 " :e などでファイルを開く際にフォルダが存在しない場合は自動作成
 function! s:mkdir(dir, force)
   if !isdirectory(a:dir) && (a:force ||
@@ -124,6 +130,7 @@ function! s:ChangeCurrentDir(directory, bang)
     endif
 endfunction
 autocmd MyAutoCmd VimEnter * call s:ChangeCurrentDir('', '')
+ 
 " *******************************************************
 " Nerdtree" 
 " *******************************************************
@@ -151,6 +158,9 @@ if dein#load_state(expand('~/.vim/dein'))
     call dein#add('tpope/vim-surround') " 「テキストを囲うもの」の編集を行う
     call dein#add('vim-scripts/YankRing.vim') " テキストコピーの履歴を順々に参照できる。<C-p>, <C-n>で循環。
     call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'}) " pythonの高機能な補完機能。
+    call dein#add('thinca/vim-quickrun')
+    call dein#add('suan/vim-instant-markdown',{'on_ft': 'markdown'})  " markdownプレビュー
+    call dein#add('Vimjas/vim-python-pep8-indent')  " pep8に準拠したインデントをサポート
 
     call dein#end()
     call dein#save_state()

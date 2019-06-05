@@ -13,7 +13,7 @@ eval "$(pyenv init -)"
 ANDROID_NDK="/Users/kenmatsui/Library/Android/sdk/ndk-bundle"
 export PATH=$PATH:${ANDROID_NDK}
 
-export PATH=/usr/local/bin:$PATH
+#export PATH=/usr/local/bin:$PATH
 
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
