@@ -137,17 +137,28 @@ autocmd MyAutoCmd VimEnter * call s:ChangeCurrentDir('', '')
 " Cntl + n でNerdtreeを起動 
 map <silent><C-e> :NERDTreeToggle<CR>
 
-
 " *******************************************************
 " dein
 " *******************************************************
 if &compatible
   set nocompatible
 endif
+
+let s:dein_path = expand('~/.vim/dein')
+let s:dein_repo_path = s:dein_path . '/repos/github.com/Shougo/dein.vim'
+
+" dein.vim がなければ github からclone
+if &runtimepath !~# '/dein.vim'
+    if !isdirectory(s:dein_repo_path)
+        execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_path
+    endif
+        execute 'set runtimepath^=' . fnamemodify(s:dein_repo_path, ':p')
+    endif"
+
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
 if dein#load_state(expand('~/.vim/dein'))
     call dein#begin(expand('~/.vim/dein'))
-
     call dein#add('Shougo/dein.vim')
     call dein#add('Shougo/neocomplete.vim') " vimの補完機能
     call dein#add('Shougo/neosnippet.vim') " vimのsnippet機能。:NeoSnippetEditで編集可能。
