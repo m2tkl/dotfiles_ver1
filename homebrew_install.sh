@@ -48,6 +48,7 @@ formulas=(
     mecab
     diff-so-fancy
     thefuck
+    tmux
 )
 
 "brew tap..."

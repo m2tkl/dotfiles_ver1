@@ -1,40 +1,22 @@
-#===========#
-# for OCaml #
-#===========#
+## for OCaml
 alias ocaml="rlwrap ocaml"
 export DYLD_LIBRARY_PATH=`opam config var z3:lib`
 
-#====================#
-# for normal command #
-#====================#
+## ls
 alias ls='ls -F'
 
-#============================#
-# python2系を使うためのalias #
-#============================#
-alias python2='/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2'
-
-#=======================================#
-# greenminerでraspbery piにアクセスする #
-#=======================================#
-alias gm='bash gm.sh'
-
-#=======================================#
-# 
-#=======================================#
+## Memo用ディレクトリを開く
 alias memo='code ~/Documents/GitHub/Memo'
 
-#==========#
-# for PBL1 #
-#==========#
-# zumoにコード転送
-alias zumo='cp /Users/kenmatsui/Documents/projects/PBL1/asp-gr_peach_gcc-mbed-master/examples/truestudio/Bom-Bom-Pudding/asp.bin /Volumes/MBED'
-# zumo のディレクトリに移動
-alias zm='cd /Users/kenmatsui/Documents/projects/PBL1/asp-gr_peach_gcc-mbed-master/examples/truestudio/Bom-Bom-Pudding/'
-# mosquittoのパス
+## defaultのvimではなく、インストールしたvimを使う
+alias vim='/usr/local/bin/vim'                   
+alias vimrc='vim ~/dotfiles/.vimrc'
+
+alias dp='cd /Users/kenmatsui/git/github.com/kenchalros/deeppatcher'
+
+## mosquittoのパス
 export PATH=/usr/local/opt/mosquitto/sbin:$PATH    # mosquitto（ブローカー）
 export PATH=/usr/local/opt/mosquitto/bin:$PATH     # mosquitto_sub（購読用）
-export PATH=/usr/local/opt/mosquitto/bin:$PATH     # mosquitto_pub（配信用）
 
 export PATH=$HOME/local/bin:$PATH
 

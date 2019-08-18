@@ -21,3 +21,5 @@ fi
 
 # OPAM configuration
 . /Users/kenmatsui/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
