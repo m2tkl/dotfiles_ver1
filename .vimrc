@@ -9,7 +9,7 @@ set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set fileformats=unix,dos,mac
 set t_Co=256
 set background=dark
-colorscheme hybrid
+"colorscheme hybrid
 syntax on
 set list                " 不可視文字の可視化
 set number              " 行番号の表示
